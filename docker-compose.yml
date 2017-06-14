@@ -1,0 +1,9 @@
+version: '3'
+services:
+  shadowsocks-server:
+    image: agate/shadowsocks-server:201706
+    build: .
+    network_mode: host
+    environment:
+      - SS_PORT=30001
+      - SS_PASSWORD=abcd

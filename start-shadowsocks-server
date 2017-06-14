@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+SS_CMD=ssserver
+
+[ "${SS_PORT}" ] && SS_CMD="${SS_CMD} -p ${SS_PORT}"
+[ "${SS_PASSWORD}" ] && SS_CMD="${SS_CMD} -k ${SS_PASSWORD}"
+[ "${SS_METHOD}" ] && SS_CMD="${SS_CMD} -m ${SS_METHOD}"
+[ "${SS_TIMEOUT}" ] && SS_CMD="${SS_CMD} -t ${SS_TIMEOUT}"
+[ "${SS_FAST_OPEN}" ] && SS_CMD="${SS_CMD} --fast-open"
+[ "${SS_WORKERS}" ] && SS_CMD="${SS_CMD} --workers=${SS_WORKERS}"
+[ "${SS_FORBIDDEN_IP}" ] && SS_CMD="${SS_CMD} --forbidden-ip=${SS_FORBIDDEN_IP}"
+[ "${SS_MANAGER_ADDRESS}" ] && SS_CMD="${SS_CMD} --manager-address=${SS_MANAGER_ADDRESS}"
+[ "${SS_PREFER_IPV6}" ] && SS_CMD="${SS_CMD} --prefer-ipv6"
+[ "${SS_VERBOSE}" ] && SS_CMD="${SS_CMD} -v"
+
+echo RUNNING: "$SS_CMD"
+$SS_CMD
