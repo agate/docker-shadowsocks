@@ -1,7 +1,18 @@
 #!/usr/bin/env bash
 
-SS_CMD=ssserver
+TYPE=$1
 
+if [ "$TYPE" != 'server' ] && [ "$TYPE" != 'local' ]; then
+  echo "usage: server | local"
+  exit 1
+fi
+
+SS_CMD=ss${TYPE}
+
+[ "${SS_SERVER_ADDR}" ] && SS_CMD="${SS_CMD} -s ${SS_SERVER_ADDR}"
+[ "${SS_SERVER_PORT}" ] && SS_CMD="${SS_CMD} -p ${SS_SERVER_PORT}"
+[ "${SS_LOCAL_ADDR}" ] && SS_CMD="${SS_CMD} -b ${SS_LOCAL_ADDR}"
+[ "${SS_LOCAL_PORT}" ] && SS_CMD="${SS_CMD} -l ${SS_LOCAL_PORT}"
 [ "${SS_PORT}" ] && SS_CMD="${SS_CMD} -p ${SS_PORT}"
 [ "${SS_PASSWORD}" ] && SS_CMD="${SS_CMD} -k ${SS_PASSWORD}"
 [ "${SS_METHOD}" ] && SS_CMD="${SS_CMD} -m ${SS_METHOD}"
