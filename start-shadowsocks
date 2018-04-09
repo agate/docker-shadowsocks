@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 TYPE=$1
+ARGS=${@:2}
 
 if [ "$TYPE" != 'server' ] && [ "$TYPE" != 'local' ]; then
   echo "usage: server | local"
@@ -24,5 +25,5 @@ SS_CMD=ss${TYPE}
 [ "${SS_PREFER_IPV6}" ] && SS_CMD="${SS_CMD} --prefer-ipv6"
 [ "${SS_VERBOSE}" ] && SS_CMD="${SS_CMD} -v"
 
-echo RUNNING: "$SS_CMD"
-$SS_CMD
+echo RUNNING: "$SS_CMD" $ARGS
+$SS_CMD $ARGS
