@@ -1,17 +1,17 @@
 version: '3'
 services:
   shadowsocks:
-    image: agate/shadowsocks:201804
+    image: agate/shadowsocks:201809
     build: .
   shadowsocks-server:
-    image: agate/shadowsocks:201804
+    image: agate/shadowsocks:201809
     network_mode: host
     command: server
     environment:
       - SS_PORT=30001
       - SS_PASSWORD=abcd
   shadowsocks-local:
-    image: agate/shadowsocks:201804
+    image: agate/shadowsocks:201809
     network_mode: host
     command: local
     environment:
